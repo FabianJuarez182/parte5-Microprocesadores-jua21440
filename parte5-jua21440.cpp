@@ -76,7 +76,7 @@ void *hilo1(void *ptr){
 }
 
 // Funcion para el segundo thread el cual se encarga de leer el valor actual del contador
-// e ingresarlo a la formula D=v/t donde v es la velocidad ingresada al inicio y t el contador.
+// e ingresarlo a la formula D=v*t donde v es la velocidad ingresada al inicio y t el contador.
 // se debe imprimir que en t segundos la distancia recorrida es: valor
 void *hilo2(void *ptr){
     while(contador < 51){
@@ -93,26 +93,11 @@ void *hilo2(void *ptr){
 // distancia recorrida, cada 5 metros recorridos se mostrara que se a
 // recorrido 5 metros
 void *hilo3(void *ptr){
-    int divisible = 0;
-    bool cambioDistancia = false;
-    int ultimaDistancia = 0;
     while(contador<51){
         //Ciclo para verificar si el numero cuantas veces recorrio 5 metros
-        if(ultimaDistancia!=distancia){
-            cambioDistancia = true;
-            ultimaDistancia = distancia;
-        }
-        else{
-            cambioDistancia=false;
-        }
-        if(cambioDistancia){
-            divisible = 0;
-            while(divisible <= distancia){
-                if(divisible>=5 &&){
-                    printf("Se han recorrido 5 metros\n");
-                }
-                divisible = divisible + 5;
-            }
+        if(distancia%5 == 0 && distancia >= 5){
+            printf("Se han recorrido 5 metros\n");
+            sleep(3);
         }
     }
     return 0;
